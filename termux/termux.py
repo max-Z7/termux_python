@@ -48,8 +48,9 @@ def contact_list():
     return out
 
 
-def dialog():
-    out, rc, err = utils.execute('termux-dialog')
+def dialog(t=''):
+    com = 'termux-dialog' + t
+    out, rc, err = utils.execute(com)
     if rc:
         raise Exception(err)
     return out
@@ -211,6 +212,14 @@ def tts_speak():
 
 def vibrate():
     out, rc, err = utils.execute('termux-vibrate')
+    if rc:
+        raise Exception(err)
+    return out
+
+
+def volume(t=''):
+    com = 'termux-volume' + t
+    out, rc, err = utils.execute(com)
     if rc:
         raise Exception(err)
     return out
